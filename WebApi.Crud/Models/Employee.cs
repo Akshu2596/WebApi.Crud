@@ -1,5 +1,4 @@
-﻿using System;
-namespace WebApi.Crud.Models
+﻿namespace WebApi.Crud.Models
 {
     public class Employee
     {

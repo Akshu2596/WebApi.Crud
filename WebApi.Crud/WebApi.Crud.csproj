@@ -10,6 +10,7 @@
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
+    <None Remove="Swashbuckle" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

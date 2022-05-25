@@ -1,10 +1,24 @@
-﻿using System;
-namespace WebApi.Crud.Models
+﻿namespace WebApi.Crud.Models
 {
-    public class Departments
+    public class Department
     {
-        public Departments()
+        public Department()
         {
+        }
+        public int DepartmentId
+        {
+            get;
+            set;
+        }
+        public string DepartmentName
+        {
+            get;
+            set;
+        }
+        public string Personnel
+        {
+            get;
+            set;
         }
     }
 }

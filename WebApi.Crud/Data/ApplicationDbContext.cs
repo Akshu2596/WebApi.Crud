@@ -13,5 +13,6 @@ namespace WebApi.Crud.Data
 
         //creating DbSet to enable ef migrations for Employee table
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
     }
 }
