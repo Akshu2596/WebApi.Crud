@@ -24,8 +24,8 @@ namespace WebApi.Crud.Controllers
             return Ok(_db.Departments.ToList());
         }
 
-       [HttpPost("{id}")]
-       public async Task<IActionResult> AddDepartment([FromRoute] int id, [FromBody] Department objDepart)
+       [HttpPost]
+       public async Task<IActionResult> AddDepartment([FromBody] Department objDepart)
         {
             if (!ModelState.IsValid)
             {
@@ -33,8 +33,8 @@ namespace WebApi.Crud.Controllers
             }
             else
             {
-                var deptId = _db.Departments.Where(x => x.DepartmentName == objDepart.DepartmentName).Select(x => x.DepartmentId).ToList();
-                var employees = _db.Employees.Where(x => deptId[0] == objDepart.DepartmentId).Select(x => x.firstName).ToList();
+                //var deptId = _db.Departments.Where(x => x.DepartmentName == objDepart.DepartmentName).Select(x => x.DepartmentId).ToList();
+                var employees = _db.Employees.Where(x => x.Department == objDepart.DepartmentName).Select(x => x.firstName).ToList();
                 string allEmployees = string.Join(",", employees);
                 objDepart.Personnel = allEmployees;
                 _db.Departments.Add(objDepart);
