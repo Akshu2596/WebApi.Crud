@@ -9,7 +9,7 @@ namespace WebApi.Crud.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController : ControllerBase
+    public class EmployeeController : Controller
     {
         public readonly ApplicationDbContext _db;
         public EmployeeController(ApplicationDbContext db)
@@ -42,12 +42,24 @@ namespace WebApi.Crud.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployee([FromRoute] int id, [FromBody] Employee objEmployee)
         {
-            if(objEmployee == null || id != objEmployee.id)
+            if (objEmployee == null || id != objEmployee.id)
             {
                 return new JsonResult("Employee does not exist!");
             }
             else
             {
+                var currentDepartment = _db.Employees.Where(x => x.firstName == objEmployee.firstName).Select(x => x.Department).ToString();
+                string employee = _db.Employees.Where(x => x.Department == currentDepartment).Select(x => x.firstName).ToString();
+                Department data = new Department()
+                {
+                    Personnel = employee
+                };
+                TempData["personnelData"] = data;
+                if (objEmployee.Department != currentDepartment)
+                {
+                    _db.Departments.Remove(data);
+                    await _db.SaveChangesAsync(); 
+                }
                 _db.Employees.Update(objEmployee);
                 await _db.SaveChangesAsync();
 

@@ -18,6 +18,7 @@ namespace WebApi.Crud.Controllers
         }
 
         //Action methods
+
         [HttpGet]
         public IActionResult GetDepartments()
         {
