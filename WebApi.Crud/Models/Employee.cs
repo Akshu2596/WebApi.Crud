@@ -1,4 +1,6 @@
-﻿namespace WebApi.Crud.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebApi.Crud.Models
 {
     public class Employee
     {
@@ -20,11 +22,13 @@
             get;
             set;
         }
+        [MaxLength(10)]
         public string phoneNumber
         {
             get;
             set;
         }
+        [Required]
         public string Department
         {
             get;
