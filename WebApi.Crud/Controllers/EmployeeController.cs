@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -66,6 +65,8 @@ namespace WebApi.Crud.Controllers
             }
             await _db.SaveChangesAsync();
             return new JsonResult("Employee data updated successfully");
+
+            //Todo: write code to add the employee to the department when it is associated with some existing department upon updating emp dept.
             
         }
         [HttpDelete("{id}")]
