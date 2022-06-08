@@ -22,7 +22,7 @@ namespace WebApi.Crud.Models
             get;
             set;
         }
-        [MaxLength(10)]
+        [MinLength(10)]
         public string phoneNumber
         {
             get;
