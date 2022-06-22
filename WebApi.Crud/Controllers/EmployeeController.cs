@@ -29,14 +29,14 @@ namespace WebApi.Crud.Controllers
         public async Task<IActionResult> AddEmployee([FromBody] Employee objEmployee)
         {
             if (!ModelState.IsValid)
-            {
+            { 
                 //todo: catch different types of model state errors
                 return new JsonResult("Error while adding a new employee");
             }
             _db.Employees.Add(objEmployee);
             await _db.SaveChangesAsync();
-
-            return new JsonResult("Employee added successfully");
+            // returns 201 success response
+            return CreatedAtAction(nameof(GetEmployees), new { id = objEmployee.id }, objEmployee);
 
         }
 
